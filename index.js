@@ -119,7 +119,7 @@ async function handleConnectionOpen() {
   const groups = Object.entries(getGroups)
     .slice(0)
     .map((entry) => entry[1]);
-  console.log(groups);
+  // console.log(groups);
 }
 
 function handleError(reason, message) {
@@ -290,10 +290,13 @@ async function checkContactExists(numberWA) {
 }
 
 function sendSuccessResponse(res, message, data = null) {
+  const dataResponse = data.name;
   res.status(200).json({
     status: true,
     response: message,
-    data,
+    data: {
+      filename: dataResponse,
+    },
   });
 }
 const UPLOADS_DIRECTORY = "./uploads/";
